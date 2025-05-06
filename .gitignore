@@ -21,3 +21,9 @@ Generated\ Files/
 # OS junk
 .DS_Store
 Thumbs.db
+*.cache
+*.vsidx
+.vs/Pokemon_Save_Reader/v17/.suo
+*.pdb
+*.cache
+*.editorconfig
