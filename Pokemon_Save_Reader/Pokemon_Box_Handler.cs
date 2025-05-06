@@ -6,44 +6,57 @@ using System.Threading.Tasks;
 
 namespace Pokemon_Save_Reader
 {
-
-    internal class Pokemon_Box_Handler
+    
+    class Pokemon_Box_Handler
     {
+        private byte[] _save_file;
+        private GameVersion _game;
+        private IPokemonGame theGame;
+        private long current_byte;
+
+        // gives the handler the file in byte array form
+        public Pokemon_Box_Handler(byte[] fileBytes) => _save_file = fileBytes;
+
         private enum GameVersion
         {
             Blue,
             Red,
             Gold
         }
-        private GameVersion _game;
-
-
-        public void doStuff()
+        
+        // sets the game version
+        public void set_Game(int version)
         {
-            _game = GameVersion.Red;
-            IPokemonGame theGame;
+            _game =(GameVersion)version;
 
-
-            if (_game == GameVersion.Red) 
-            { 
-                theGame = new Pokemon_Red();
-            }
-            else 
-            { 
-                theGame = new Pokemon_Blue();
-            }
-
-            for (int i = 1; i < 152; i++) 
+            switch (_game)
             {
-                Console.WriteLine($"{i,3}:  {Pokedex.Entry[i]}");
+               case GameVersion.Red:
+                    theGame = new Pokemon_Red();
+                    break;
+
+               case GameVersion.Blue:
+                    theGame = new Pokemon_Blue();
+                    break;
+
+                default:
+                    break;
             }
+        }
 
-            int guy = theGame.getSpecies(0x01);
+        public void go_to_box(int box_number)
+        {
+            long box_offset = (long)theGame.get_box_1_offset();
+            current_byte = (long)box_offset + (theGame.get_box_size() * ((long)box_number - 1));
+            current_byte += theGame.get_box_header_offset();
 
-           //Console.WriteLine(Pokedex.Entry[guy]);
+            showByte();
+        }
 
+        private void showByte()
+        {
+            Console.WriteLine($"byte at 0x{current_byte:X4} is: 0x{_save_file[current_byte]:X2} ");
         }
 
     }
-
 }

@@ -7,24 +7,24 @@
       "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\pokemon_box_handler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\pokemon_red.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\pokemon_red.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\pokemon_blue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\pokemon_blue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\pokedex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\pokedex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\interface_pokemon_game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\interface_pokemon_game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\pokemon_blue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\pokemon_blue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\pokemon_red.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\pokemon_red.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|c:\\users\\camer\\source\\repos\\pokemon_save_reader\\pokemon_save_reader\\pokedex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B0BABB4-13DF-4156-B46E-76E9363A652A}|Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj|solutionrelative:pokemon_save_reader\\pokedex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,8 +34,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Interface_Pokemon_Game.cs",
+              "DocumentMoniker": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
+              "RelativeDocumentMoniker": "Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
+              "ToolTip": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
+              "RelativeToolTip": "Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T15:01:55.506Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,70 +57,62 @@
               "RelativeDocumentMoniker": "Pokemon_Save_Reader\\Pokemon_Box_Handler.cs",
               "ToolTip": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokemon_Box_Handler.cs",
               "RelativeToolTip": "Pokemon_Save_Reader\\Pokemon_Box_Handler.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwDEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T14:08:00.586Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Pokemon_Red.cs",
               "DocumentMoniker": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokemon_Red.cs",
               "RelativeDocumentMoniker": "Pokemon_Save_Reader\\Pokemon_Red.cs",
               "ToolTip": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokemon_Red.cs",
               "RelativeToolTip": "Pokemon_Save_Reader\\Pokemon_Red.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAkAAAA",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAIwLcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:08:00.601Z"
+              "WhenOpened": "2025-05-06T14:08:00.601Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Pokemon_Blue.cs",
               "DocumentMoniker": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokemon_Blue.cs",
               "RelativeDocumentMoniker": "Pokemon_Save_Reader\\Pokemon_Blue.cs",
               "ToolTip": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokemon_Blue.cs",
               "RelativeToolTip": "Pokemon_Save_Reader\\Pokemon_Blue.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAIA7wBUAAAAXAAAA",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAqwLAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:08:00.603Z"
+              "WhenOpened": "2025-05-06T14:08:00.603Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Pokedex.cs",
               "DocumentMoniker": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokedex.cs",
               "RelativeDocumentMoniker": "Pokemon_Save_Reader\\Pokedex.cs",
               "ToolTip": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokedex.cs",
               "RelativeToolTip": "Pokemon_Save_Reader\\Pokedex.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAApwGEAAAAaAAAA",
+              "ViewState": "AgIAAEUAAAAAAAAAAAApwGEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:08:00.604Z"
+              "WhenOpened": "2025-05-06T14:08:00.604Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Interface_Pokemon_Game.cs",
-              "DocumentMoniker": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
-              "RelativeDocumentMoniker": "Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
-              "ToolTip": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
-              "RelativeToolTip": "Pokemon_Save_Reader\\Interface_Pokemon_Game.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:08:00.605Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Program.cs",
               "RelativeDocumentMoniker": "Pokemon_Save_Reader\\Program.cs",
               "ToolTip": "C:\\Users\\camer\\source\\repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Program.cs",
               "RelativeToolTip": "Pokemon_Save_Reader\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAYAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:08:00.607Z"
+              "WhenOpened": "2025-05-06T14:08:00.607Z",
+              "EditorCaption": ""
             }
           ]
         }

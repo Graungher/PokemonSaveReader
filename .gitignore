@@ -27,3 +27,5 @@ Thumbs.db
 *.pdb
 *.cache
 *.editorconfig
+*.json
+.vs/Pokemon_Save_Reader/v17/.suo

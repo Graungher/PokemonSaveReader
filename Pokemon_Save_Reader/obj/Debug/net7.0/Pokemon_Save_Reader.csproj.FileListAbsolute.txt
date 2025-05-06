@@ -27,3 +27,4 @@ C:\Users\camer\Source\Repos\Pokemon_Save_Reader\Pokemon_Save_Reader\obj\Debug\ne
 C:\Users\camer\Source\Repos\Pokemon_Save_Reader\Pokemon_Save_Reader\obj\Debug\net7.0\Pokemon_Save_Reader.pdb
 C:\Users\camer\Source\Repos\Pokemon_Save_Reader\Pokemon_Save_Reader\obj\Debug\net7.0\Pokemon_Save_Reader.genruntimeconfig.cache
 C:\Users\camer\Source\Repos\Pokemon_Save_Reader\Pokemon_Save_Reader\obj\Debug\net7.0\ref\Pokemon_Save_Reader.dll
+C:\Users\camer\Source\Repos\Pokemon_Save_Reader\Pokemon_Save_Reader\bin\Debug\net7.0\Pokemon.sav
