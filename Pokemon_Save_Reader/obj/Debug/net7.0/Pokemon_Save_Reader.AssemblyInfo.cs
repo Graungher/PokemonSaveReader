@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pokemon_Save_Reader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a3814582d878fe4b44addcd2fc16187c7084837")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0f82d73715aba5ac19e31dfa971641ce8f19501")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pokemon_Save_Reader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pokemon_Save_Reader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

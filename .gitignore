@@ -29,3 +29,8 @@ Thumbs.db
 *.editorconfig
 *.json
 .vs/Pokemon_Save_Reader/v17/.suo
+.vs/Pokemon_Save_Reader/v17/.suo
+Pokemon_Save_Reader/bin/Debug/net7.0/Pokemon_Save_Reader.pdb
+Pokemon_Save_Reader/obj/Debug/net7.0/Pokemon_Save_Reader.AssemblyInfo.cs
+Pokemon_Save_Reader/obj/Debug/net7.0/Pokemon_Save_Reader.AssemblyInfoInputs.cache
+Pokemon_Save_Reader/obj/Debug/net7.0/Pokemon_Save_Reader.pdb

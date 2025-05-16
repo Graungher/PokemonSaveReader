@@ -17,8 +17,24 @@ namespace MyApp
 
                 Pokemon_Box_Handler a = new Pokemon_Box_Handler(fileBytes);
                 a.set_Game(0);
+                a.go_to_box(1);
+                a.go_to_pokemon(1);
+                a.go_to_pokemon(2);
+                a.go_to_pokemon(1);
+
+                Console.WriteLine("");
+
                 a.go_to_box(2);
-                // Console.WriteLine($"byte at 0x{offset + box_header_offset:X4} is: 0x{fileBytes[offset + box_header_offset]:X2} ");
+                a.go_to_pokemon(1);
+                a.go_to_pokemon(2);
+                a.go_to_pokemon(1);
+
+                Console.WriteLine("");
+
+                a.go_to_box(1);
+                a.go_to_pokemon(1);
+                a.go_to_pokemon(2);
+                a.go_to_pokemon(1);
             }
             catch (Exception ex)
             {

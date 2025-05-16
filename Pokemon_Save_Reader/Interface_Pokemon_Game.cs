@@ -12,6 +12,6 @@ namespace Pokemon_Save_Reader
         int get_box_1_offset();
         int get_box_header_offset();
         int get_box_size();
-
+        int get_pokemon_size();
     }
 }

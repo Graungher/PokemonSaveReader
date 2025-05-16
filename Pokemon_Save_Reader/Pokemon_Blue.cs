@@ -166,6 +166,7 @@ namespace Pokemon_Save_Reader
         private readonly int _box_1_offset = 0x4000;
         private readonly int _box_header_offset = 0x16;
         private readonly int _box_size = 0x462;
+        private readonly int _pokemon_size = 0x21;
 
         public int getSpecies(byte species)
         {
@@ -182,6 +183,10 @@ namespace Pokemon_Save_Reader
         public int get_box_size()
         {
             return _box_size;
+        }
+        public int get_pokemon_size()
+        {
+            return _pokemon_size;
         }
     }
 }
