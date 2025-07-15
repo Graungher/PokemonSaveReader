@@ -12,6 +12,7 @@ namespace Pokemon_Save_Reader
         private readonly byte[] _save_file;
         private GameVersion _game;
         private IPokemonGame _theGame;
+        private Pokemon_Assembler _TheFactory;
         private long _current_file_location;
 
         private long _box_offset = 0;
@@ -41,10 +42,12 @@ namespace Pokemon_Save_Reader
             {
                case GameVersion.Red:
                     _theGame = new Pokemon_Red();
+                    _TheFactory = new Gen1Assembler(_save_file);
                     break;
 
                case GameVersion.Blue:
                     _theGame = new Pokemon_Blue();
+                    _TheFactory = new Gen1Assembler(_save_file);
                     break;
 
                 default:
@@ -73,8 +76,19 @@ namespace Pokemon_Save_Reader
             _current_pokemon = _current_file_location;
             
             ShowByte();
+            buildPokemon();
         }
 
+        public void buildPokemon() 
+        {
+            _TheFactory.setName(Pokedex.Entry[_theGame.getSpecies(_save_file[(int)_current_file_location + _theGame.get_name_offset()])]);
+            if (_TheFactory is Gen1Assembler gen1)
+            {
+                gen1.printDetails();
+            }
+        }
+
+        // this needs reworked or deleted
         private void ShowByte()
         {
             EnsureGameIsSet();

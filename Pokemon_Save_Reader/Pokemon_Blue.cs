@@ -9,10 +9,10 @@ namespace Pokemon_Save_Reader
 {
     public class Pokemon_Blue : IPokemonGame
     {
-        private readonly int _box_1_offset = 0x4000;
-        private readonly int _box_header_offset = 0x16;
-        private readonly int _box_size = 0x462;
-        private readonly int _pokemon_size = 0x21;
+        private readonly int _box_1_offset = 0x4000;        // box 1's memory Offset
+        private readonly int _box_header_offset = 0x16;     // the size of the box header
+        private readonly int _box_size = 0x462;             // the size of each box
+        private readonly int _pokemon_size = 0x21;          // the size of the pokemon data struct
 
         public int getSpecies(byte species)
         {
@@ -34,5 +34,14 @@ namespace Pokemon_Save_Reader
         {
             return _pokemon_size;
         }
+        public int get_name_offset()
+        {
+            return 0;
+        }
+        public int get_level_offset()
+        {
+            return 1; // temp func
+        }
+
     }
 }
