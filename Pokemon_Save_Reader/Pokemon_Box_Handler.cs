@@ -9,7 +9,7 @@ namespace Pokemon_Save_Reader
     
     class Pokemon_Box_Handler
     {
-        private byte[] _save_file;
+        private readonly byte[] _save_file;
         private GameVersion _game;
         private IPokemonGame _theGame;
         private long _current_file_location;
@@ -24,7 +24,7 @@ namespace Pokemon_Save_Reader
         // gives the handler the file in byte array form
         public Pokemon_Box_Handler(byte[] fileBytes) => _save_file = fileBytes;
 
-        private enum GameVersion
+        public enum GameVersion
         {
             Blue,
             Red,
@@ -32,7 +32,7 @@ namespace Pokemon_Save_Reader
         }
         
         // sets the game version
-        public void set_Game(int version)
+        public void SetGame(GameVersion version)
         {
             _game =(GameVersion)version;
             bool no_game = false;
@@ -58,28 +58,35 @@ namespace Pokemon_Save_Reader
             }
         }
 
-        public void go_to_box(int box_number)
+        public void GoToBox(int box_number)
         {
+            EnsureGameIsSet();
             _current_file_location = _box_offset + (_theGame.get_box_size() * (box_number - 1));
             _current_box = _current_file_location;
         }
 
-        public void go_to_pokemon(int pokemon_index)
+        public void GoToPokemon(int pokemon_index)
         {
+            EnsureGameIsSet();
             _current_file_location = _current_box + _theGame.get_box_header_offset();
             _current_file_location +=(_pokemon_offset * (pokemon_index - 1));
             _current_pokemon = _current_file_location;
             
-            showByte();
+            ShowByte();
         }
 
-        private void showByte()
+        private void ShowByte()
         {
-            byte temp = _save_file[_current_file_location];
+            EnsureGameIsSet();
+            byte temp = _save_file[(int)_current_file_location];
             //String monName = Pokedex.Entry[(int)_current_file_location];
 
-            Console.WriteLine($"byte at 0x{_current_file_location:X4} is: 0x{_save_file[_current_file_location]:X2} and that is {Pokedex.Entry[_theGame.getSpecies(_save_file[_current_file_location])]}");
+            Console.WriteLine($"byte at 0x{_current_file_location:X4} is: 0x{_save_file[(int)_current_file_location]:X2} and that is {Pokedex.Entry[_theGame.getSpecies(_save_file[(int)_current_file_location])]}");
         }
-
+        private void EnsureGameIsSet()
+        {
+            if (_theGame == null)
+                throw new InvalidOperationException("Game version not set. Call SetGame() first.");
+        }
     }
 }

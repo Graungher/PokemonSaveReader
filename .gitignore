@@ -34,3 +34,7 @@ Pokemon_Save_Reader/bin/Debug/net7.0/Pokemon_Save_Reader.pdb
 Pokemon_Save_Reader/obj/Debug/net7.0/Pokemon_Save_Reader.AssemblyInfo.cs
 Pokemon_Save_Reader/obj/Debug/net7.0/Pokemon_Save_Reader.AssemblyInfoInputs.cache
 Pokemon_Save_Reader/obj/Debug/net7.0/Pokemon_Save_Reader.pdb
+*.v2
+*.bin
+*.pdb
+*.cache

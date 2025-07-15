@@ -15,9 +15,9 @@ namespace MyApp
                 fileBytes = File.ReadAllBytes(filePath);
 
                 Pokemon_Box_Handler a = new Pokemon_Box_Handler(fileBytes);
-                a.set_Game(0);
-                a.go_to_box(1);
-                a.go_to_pokemon(1);
+                a.SetGame(Pokemon_Box_Handler.GameVersion.Blue);
+                a.GoToBox(1);
+                a.GoToPokemon(1);
             }
             catch (Exception ex)
             {
