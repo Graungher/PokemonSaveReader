@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pokemon_Save_Reader
+namespace PokemonSaveReader
 {
-    class Gen_1_Dictionary
+    class GenOneDictionary
     {
-        public static readonly Dictionary<byte, int> Byte_to_Pokedex = new Dictionary<byte, int>
+        public static readonly Dictionary<byte, int> ByteToPokedex = new Dictionary<byte, int>
         {
             { 0x01, 112 }, //Rhydon = 0x01
             { 0x02, 115 }, // Kangaskhan = 0x02

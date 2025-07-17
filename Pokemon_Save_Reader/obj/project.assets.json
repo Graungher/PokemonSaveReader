@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\camer\\Source\\Repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj",
-      "projectName": "Pokemon_Save_Reader",
-      "projectPath": "C:\\Users\\camer\\Source\\Repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\Pokemon_Save_Reader.csproj",
+      "projectUniqueName": "C:\\Users\\camer\\Source\\Repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\PokemonSaveReader.csproj",
+      "projectName": "PokemonSaveReader",
+      "projectPath": "C:\\Users\\camer\\Source\\Repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\PokemonSaveReader.csproj",
       "packagesPath": "C:\\Users\\camer\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\camer\\Source\\Repos\\Pokemon_Save_Reader\\Pokemon_Save_Reader\\obj\\",
       "projectStyle": "PackageReference",

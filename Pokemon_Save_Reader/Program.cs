@@ -1,4 +1,4 @@
-﻿using Pokemon_Save_Reader;
+﻿using PokemonSaveReader;
 using System;
 
 namespace MyApp
@@ -14,9 +14,8 @@ namespace MyApp
             {
                 fileBytes = File.ReadAllBytes(filePath);
 
-                Pokemon_Box_Handler a = new Pokemon_Box_Handler(fileBytes);
-                a.SetGame(Pokemon_Box_Handler.GameVersion.Blue);
-                a.GoToBox(1);
+                PokemonBoxHandler a = new PokemonBoxHandler(fileBytes, GameVersion.Blue);
+                a.GoToBox(2);
                 a.GoToPokemon(1);
             }
             catch (Exception ex)
