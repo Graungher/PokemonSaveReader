@@ -12,15 +12,13 @@ namespace PokemonSaveReader
     {
         private readonly byte[] _saveFile;
         private readonly GameVersion _gameVersion;
-        private IPokemonGame _theGame;
+        private PokemonGame _theGame;
         private PokemonClass _pokemon;
         private long _currentFileOffset;
 
-        private long _boxOffset = 0;
         private long _currentBox;
-        private byte _current_byte;
+        private int _activeBox;
 
-        private long _pokemonOffset = 0;
         private long _currentPokemonOffset;
 
         // gives the handler the file in byte array form
@@ -34,8 +32,6 @@ namespace PokemonSaveReader
         // sets the game version
         public void SetGame()
         {
-            bool no_game = false;
-
             switch (_gameVersion)
             {
                case GameVersion.Red:
@@ -49,31 +45,33 @@ namespace PokemonSaveReader
                     break;
 
                 default:
-                    no_game = true;
                     break;
             }
-            if (!no_game)
-            {
-                _boxOffset = (long)_theGame.FirstBoxOffset;
-                _pokemonOffset = (long)_theGame.PokemonSize;
-            }
         }
 
-        public void GoToBox(int box_number)
+        private void GoToBox(int box_number)
         {
+            
             EnsureGameIsSet();
-            _currentFileOffset = _boxOffset + (_theGame.BoxSize * (box_number - 1));
+            long _currentFileOffset = _theGame.FirstBoxOffset + _theGame.BoxSize * (box_number - 1);
+            if (_theGame.ActiveBoxOffset.HasValue && _theGame.ActiveBoxBitOffset.HasValue)
+            {
+                _activeBox = (_saveFile[(int)_theGame.ActiveBoxBitOffset] & 0x0F) + 1;
+                if(box_number == _activeBox)
+                {
+                    _currentFileOffset = ((int)_theGame.ActiveBoxOffset);
+                }
+            }
             _currentBox = _currentFileOffset;
+            Console.WriteLine($"The Active box is: {_activeBox}, and the selected box is {box_number}");
         }
 
-        public void GoToPokemon(int pokemon_index)
+        private void GoToPokemon(int pokemon_index)
         {
             EnsureGameIsSet();
             _currentFileOffset = _currentBox + _theGame.BoxHeaderOffset;
-            _currentFileOffset +=(_pokemonOffset * (pokemon_index - 1));
+            _currentFileOffset += (_theGame.PokemonSize * (pokemon_index - 1));
             _currentPokemonOffset = _currentFileOffset;
-            
-            BuildPokemon();
         }
 
         public void BuildPokemon() 

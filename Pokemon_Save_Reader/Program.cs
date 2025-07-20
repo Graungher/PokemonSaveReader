@@ -7,7 +7,7 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            string filePath = "Pokemon.sav";
+            string filePath = "Pokemon3.sav";
             byte[] fileBytes;
 
             try
@@ -15,8 +15,7 @@ namespace MyApp
                 fileBytes = File.ReadAllBytes(filePath);
 
                 PokemonBoxHandler a = new PokemonBoxHandler(fileBytes, GameVersion.Blue);
-                a.GoToBox(2);
-                a.GoToPokemon(1);
+
             }
             catch (Exception ex)
             {
