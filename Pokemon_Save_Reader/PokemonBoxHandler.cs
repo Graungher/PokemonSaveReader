@@ -8,31 +8,46 @@ using System.Xml.Linq;
 namespace PokemonSaveReader
 {
     
-    class PokemonBoxHandler
+    public class PokemonBoxHandler
     {
         private readonly byte[] _saveFile;
-        private readonly GameVersion _gameVersion;
         private PokemonGame _theGame;
         private PokemonClass _pokemon;
-        private long _currentFileOffset;
 
-        private long _currentBox;
-        private int _activeBox;
-
+        private long _currentBoxOffset;
         private long _currentPokemonOffset;
 
+
+        // Constructor
         // gives the handler the file in byte array form
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         public PokemonBoxHandler(byte[] fileBytes, GameVersion game)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
-            _gameVersion = game;
             _saveFile = fileBytes;
-            SetGame();
+            SetGame(game);
         }
 
-        // sets the game version
-        public void SetGame()
+        // -------------------------------
+        // PUBLIC METHODS
+        // -------------------------------
+
+        public PokemonClass GetPokemonFromBox(int boxNumber, int slotNumber)
         {
-            switch (_gameVersion)
+            GoToBox(boxNumber);
+            GoToPokemon(slotNumber);
+            BuildPokemon();
+            return _pokemon;
+        }
+
+        // -------------------------------
+        // PRIVATE METHODS
+        // -------------------------------
+
+        // sets the game version
+        private void SetGame(GameVersion game)
+        {
+            switch (game)
             {
                case GameVersion.Red:
                     _theGame = new PokemonRed();
@@ -45,47 +60,51 @@ namespace PokemonSaveReader
                     break;
 
                 default:
-                    break;
+                    throw new ArgumentException($"Unsupported game version: {game}");
             }
         }
 
-        private void GoToBox(int box_number)
+        private void GoToBox(int boxNumber)
         {
             
             EnsureGameIsSet();
-            long _currentFileOffset = _theGame.FirstBoxOffset + _theGame.BoxSize * (box_number - 1);
+
+            int boxOffsetFromFirst = _theGame.BoxSize * (boxNumber - 1);
+            _currentBoxOffset = _theGame.FirstBoxOffset + boxOffsetFromFirst;
+
             if (_theGame.ActiveBoxOffset.HasValue && _theGame.ActiveBoxBitOffset.HasValue)
             {
-                _activeBox = (_saveFile[(int)_theGame.ActiveBoxBitOffset] & 0x0F) + 1;
-                if(box_number == _activeBox)
+                const byte ActiveBoxMask = 0x0F;
+                int activeBox = (_saveFile[(int)_theGame.ActiveBoxBitOffset] & ActiveBoxMask) + 1;
+
+                // Needed for Generation 1 where the active box is stored in a different memory location.
+                if (boxNumber == activeBox)
                 {
-                    _currentFileOffset = ((int)_theGame.ActiveBoxOffset);
+                    _currentBoxOffset = ((int)_theGame.ActiveBoxOffset);
                 }
             }
-            _currentBox = _currentFileOffset;
-            Console.WriteLine($"The Active box is: {_activeBox}, and the selected box is {box_number}");
+ //           Console.WriteLine($"The Active box is: {_activeBox}, and the selected box is {box_number}");  //debug line
         }
 
         private void GoToPokemon(int pokemon_index)
         {
             EnsureGameIsSet();
-            _currentFileOffset = _currentBox + _theGame.BoxHeaderOffset;
-            _currentFileOffset += (_theGame.PokemonSize * (pokemon_index - 1));
-            _currentPokemonOffset = _currentFileOffset;
+
+            _currentPokemonOffset = _currentBoxOffset + _theGame.BoxHeaderSize;
+            _currentPokemonOffset += (_theGame.PokemonSize * (pokemon_index - 1));
         }
 
-        public void BuildPokemon() 
+        private void BuildPokemon() 
         {
-            byte _current_byte = _saveFile[(int)_currentPokemonOffset + _theGame.NameOffset];
-            _pokemon.Name = Pokedex.IdToName[_theGame.PokedexIdFromByte(_current_byte)];
+            int speciesOffset = (int)_currentPokemonOffset + _theGame.NameOffset;
+            byte speciesByte = _saveFile[speciesOffset];
+            int pokedexId = _theGame.PokedexIdFromByte(speciesByte);
+            _pokemon.Name = Pokedex.IdToName[pokedexId];
 
-            _pokemon.Level = _saveFile[(int)_currentPokemonOffset + _theGame.LevelOffset];
-
-            if (_pokemon is PokemonGenOne gen1)
-            {
-                gen1.PrintDetails();
-            }
+            int levelOffset = (int)_currentPokemonOffset + _theGame.LevelOffset;
+            _pokemon.Level = _saveFile[levelOffset];
         }
+
 
         private void EnsureGameIsSet()
         {

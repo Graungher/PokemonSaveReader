@@ -13,9 +13,14 @@ namespace MyApp
             try
             {
                 fileBytes = File.ReadAllBytes(filePath);
+                PokemonClass pokemon;
 
                 PokemonBoxHandler a = new PokemonBoxHandler(fileBytes, GameVersion.Blue);
-
+                pokemon = a.GetPokemonFromBox(2, 17);
+                if (pokemon is PokemonGenOne gen1)
+                {
+                    gen1.PrintDetails();
+                }
             }
             catch (Exception ex)
             {

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace PokemonSaveReader
 {
-    public abstract class PokemonClass
+    public class PokemonClass
     {
 
         protected readonly byte[] _saveFile;
 
         public PokemonClass(byte[] fileBytes) => _saveFile = fileBytes;
-        public string Name { get; set; } = string.Empty;
-        public int Level { get; set; } = 1;
+        public string Name { get; set; } = "No Pokemon";
+        public int Level { get; set; } = 0;
     }
 
     public class PokemonGenOne : PokemonClass

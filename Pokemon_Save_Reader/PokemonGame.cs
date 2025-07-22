@@ -8,37 +8,72 @@ namespace PokemonSaveReader
 {
     public abstract class PokemonGame
     {
-        public abstract int PokedexIdFromByte(byte species);
+        // -------------------------------
+        // BOX STUFF
+        // -------------------------------
+        public virtual int? ActiveBoxBitOffset => null;
         public abstract int FirstBoxOffset { get; }
-        public abstract int BoxHeaderOffset { get; }
+        public virtual int? ActiveBoxOffset => null;
+        public abstract int BoxHeaderSize { get; }
         public abstract int BoxSize { get; }
+
+        // -------------------------------
+        // POKEMON STUFF
+        // -------------------------------
+        public abstract int PokemonCount { get; }
         public abstract int PokemonSize { get; }
         public abstract int NameOffset { get; }
         public abstract int LevelOffset { get; }
-        public virtual int? ActiveBoxOffset => null;
-        public virtual int? ActiveBoxBitOffset => null;
+
+        // -------------------------------
+        // UTILITIES
+        // -------------------------------
+        public abstract int PokedexIdFromByte(byte species);
     }
+
     public class PokemonBlue : PokemonGame
     {
-        private readonly int _boxOneOffset = 0x4000;        // box 1's memory Offset
-        private readonly int _boxHeaderOffset = 0x16;       // the size of the box header
-        private readonly int _boxSize = 0x462;              // the size of each box
-        private readonly int _pokemonSize = 0x21;           // the size of the pokemon data struct
-        private readonly int _activeBoxBitOffset = 0x284C;  // active box's identifer memory offset
-        private readonly int _activeBoxOffset = 0x30C0;     // active box's memory Offset
+        // -------------------------------
+        // BOX STUFF
+        // -------------------------------
+        private const int _activeBoxBitOffset = 0x284C;
+        private const int _boxOneOffset = 0x4000;
+        private const int _activeBoxOffset = 0x30C0;
+        private const int _boxPokemonCountOffset = 0x00;
+        private const int _boxHeaderSize = 0x16;
+        private const int _boxSize = 0x462;
+
+        // -------------------------------
+        // POKEMON STUFF
+        // -------------------------------
+        private const int _pokemonSize = 0x21;
+        private const int _nameOffset = 0;
+        private const int _levelOffset = 3; // still temporary
+
+        // -------------------------------
+        // PROPERTIES
+        // -------------------------------
+        public override int? ActiveBoxBitOffset => _activeBoxBitOffset;
+        public override int FirstBoxOffset => _boxOneOffset;
+        public override int? ActiveBoxOffset => _activeBoxOffset;
+        public override int BoxHeaderSize => _boxHeaderSize;
+        public override int BoxSize => _boxSize;
+        public override int PokemonCount => _boxPokemonCountOffset;
+        public override int PokemonSize => _pokemonSize;
+        public override int NameOffset => _nameOffset;
+        public override int LevelOffset => _levelOffset;
+
+        // -------------------------------
+        // METHODS
+        // -------------------------------
         public override int PokedexIdFromByte(byte species)
         {
             return GenOneDictionary.ByteToPokedex[species];
         }
-        public override int? ActiveBoxOffset => _activeBoxOffset;
-        public override int? ActiveBoxBitOffset => _activeBoxBitOffset;
-        public override int FirstBoxOffset => _boxOneOffset;
-        public override int BoxHeaderOffset => _boxHeaderOffset;
-        public override int BoxSize => _boxSize;
-        public override int PokemonSize => _pokemonSize;
-        public override int NameOffset => 0;
-        public override int LevelOffset => 3; // still temporary
     }
+
     public class PokemonRed : PokemonBlue
-    { }
+    {
+        // Inherit from Blue; override if needed later
+    }
 }
