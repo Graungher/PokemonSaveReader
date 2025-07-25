@@ -17,7 +17,6 @@ namespace PokemonSaveReader
         private long _currentBoxOffset;
         private long _currentPokemonOffset;
 
-
         // Constructor
         // gives the handler the file in byte array form
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
@@ -41,10 +40,9 @@ namespace PokemonSaveReader
         }
 
         // -------------------------------
-        // PRIVATE METHODS
+        // PRIVATE METHODS - GAME SETUP
         // -------------------------------
 
-        // sets the game version
         private void SetGame(GameVersion game)
         {
             switch (game)
@@ -63,11 +61,22 @@ namespace PokemonSaveReader
                     throw new ArgumentException($"Unsupported game version: {game}");
             }
         }
+        private void EnsureGameIsSet()
+        {
+            if (_theGame == null)
+                throw new InvalidOperationException("Game version not set.");
+        }
+
+        // -------------------------------
+        // PRIVATE METHODS - BOX HANDLING
+        // -------------------------------
 
         private void GoToBox(int boxNumber)
         {
             
             EnsureGameIsSet();
+            if(boxNumber > _theGame.MaxBoxes)
+                throw new InvalidOperationException("Invalid Box Selection");
 
             int boxOffsetFromFirst = _theGame.BoxSize * (boxNumber - 1);
             _currentBoxOffset = _theGame.FirstBoxOffset + boxOffsetFromFirst;
@@ -76,19 +85,28 @@ namespace PokemonSaveReader
             {
                 const byte ActiveBoxMask = 0x0F;
                 int activeBox = (_saveFile[(int)_theGame.ActiveBoxBitOffset] & ActiveBoxMask) + 1;
-
+                Console.WriteLine($"The Active box is: {activeBox}, and the selected box is {boxNumber}");  //debug line
                 // Needed for Generation 1 where the active box is stored in a different memory location.
                 if (boxNumber == activeBox)
                 {
                     _currentBoxOffset = ((int)_theGame.ActiveBoxOffset);
                 }
             }
- //           Console.WriteLine($"The Active box is: {_activeBox}, and the selected box is {box_number}");  //debug line
+            
         }
+
+        // -------------------------------
+        // PRIVATE METHODS - POKEMON HANDLING
+        // -------------------------------
 
         private void GoToPokemon(int pokemon_index)
         {
             EnsureGameIsSet();
+       
+            int currentOccupantCountOffset = _theGame.BoxOccupancyOffset + (int)_currentBoxOffset;
+
+            if(pokemon_index > _saveFile[currentOccupantCountOffset])
+                throw new InvalidOperationException("Invalid Pokemon Selection");
 
             _currentPokemonOffset = _currentBoxOffset + _theGame.BoxHeaderSize;
             _currentPokemonOffset += (_theGame.PokemonSize * (pokemon_index - 1));
@@ -103,13 +121,6 @@ namespace PokemonSaveReader
 
             int levelOffset = (int)_currentPokemonOffset + _theGame.LevelOffset;
             _pokemon.Level = _saveFile[levelOffset];
-        }
-
-
-        private void EnsureGameIsSet()
-        {
-            if (_theGame == null)
-                throw new InvalidOperationException("Game version not set.");
         }
     }
 }

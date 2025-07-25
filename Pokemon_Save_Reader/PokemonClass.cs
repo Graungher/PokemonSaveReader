@@ -8,7 +8,6 @@ namespace PokemonSaveReader
 {
     public class PokemonClass
     {
-
         protected readonly byte[] _saveFile;
 
         public PokemonClass(byte[] fileBytes) => _saveFile = fileBytes;
