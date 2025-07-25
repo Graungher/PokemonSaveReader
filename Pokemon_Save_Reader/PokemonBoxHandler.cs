@@ -38,6 +38,41 @@ namespace PokemonSaveReader
             BuildPokemon();
             return _pokemon;
         }
+        public String GetPokemonNameFromBox(int boxNumber, int slotNumber)
+        {
+            EnsureGameIsSet();
+            GoToBox(boxNumber);
+            GoToPokemon(slotNumber);
+
+            int speciesOffset = (int)_currentPokemonOffset + _theGame.NameOffset;
+            byte speciesByte = _saveFile[speciesOffset];
+            int pokedexId = _theGame.PokedexIdFromByte(speciesByte);
+            String pokemonName = Pokedex.IdToName[pokedexId];
+
+            return pokemonName;
+        }
+        public int BoxOccupantCount(int boxNumber)
+        {
+            EnsureGameIsSet();
+            long tempBoxOffset = _currentBoxOffset;
+
+            GoToBox(boxNumber);                 // need to temerarally destroy current box to send info about a different box
+            long boxOccupantOffset = _theGame.BoxOccupancyOffset + _currentBoxOffset;
+
+            _currentBoxOffset = tempBoxOffset;  // restore original box Stuff
+
+            int pokemonCount = _saveFile[(int)boxOccupantOffset];
+            if (pokemonCount > 20)
+                pokemonCount = 0;               // if invalid pokemon count, return 0
+
+            //Console.WriteLine($"0x{boxOccupantOffset:X}");
+            return pokemonCount;
+        }
+        public int MaxBoxes()
+        {
+            EnsureGameIsSet();
+            return _theGame.MaxBoxes;
+        }
 
         // -------------------------------
         // PRIVATE METHODS - GAME SETUP
@@ -60,6 +95,8 @@ namespace PokemonSaveReader
                 default:
                     throw new ArgumentException($"Unsupported game version: {game}");
             }
+            GoToBox(1);
+            GoToPokemon(1);
         }
         private void EnsureGameIsSet()
         {
@@ -85,14 +122,15 @@ namespace PokemonSaveReader
             {
                 const byte ActiveBoxMask = 0x0F;
                 int activeBox = (_saveFile[(int)_theGame.ActiveBoxBitOffset] & ActiveBoxMask) + 1;
-                Console.WriteLine($"The Active box is: {activeBox}, and the selected box is {boxNumber}");  //debug line
+                // Console.WriteLine($"The Active box is: {activeBox}, and the selected box is {boxNumber}");  //debug line
+
                 // Needed for Generation 1 where the active box is stored in a different memory location.
                 if (boxNumber == activeBox)
                 {
                     _currentBoxOffset = ((int)_theGame.ActiveBoxOffset);
                 }
             }
-            
+            //Console.WriteLine($"This Is Box {boxNumber}");
         }
 
         // -------------------------------
@@ -110,6 +148,8 @@ namespace PokemonSaveReader
 
             _currentPokemonOffset = _currentBoxOffset + _theGame.BoxHeaderSize;
             _currentPokemonOffset += (_theGame.PokemonSize * (pokemon_index - 1));
+
+            //Console.WriteLine($"This Is Pokemon Index {pokemon_index}");
         }
 
         private void BuildPokemon() 
