@@ -16,7 +16,7 @@ namespace MyApp
                 PokemonClass pokemon;
 
                 PokemonBoxHandler a = new PokemonBoxHandler(fileBytes, GameVersion.Blue);
-                pokemon = a.GetPokemonFromBox(2, 1);
+                pokemon = a.GetPokemonFromBox(1, 1);
                 if (pokemon is PokemonGenOne gen1)
                 {
                     gen1.PrintDetails();

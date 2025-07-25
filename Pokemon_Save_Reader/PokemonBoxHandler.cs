@@ -75,7 +75,7 @@ namespace PokemonSaveReader
         {
             
             EnsureGameIsSet();
-            if(boxNumber > _theGame.MaxBoxes)
+            if(boxNumber > _theGame.MaxBoxes || boxNumber <= 0)
                 throw new InvalidOperationException("Invalid Box Selection");
 
             int boxOffsetFromFirst = _theGame.BoxSize * (boxNumber - 1);
@@ -105,7 +105,7 @@ namespace PokemonSaveReader
        
             int currentOccupantCountOffset = _theGame.BoxOccupancyOffset + (int)_currentBoxOffset;
 
-            if(pokemon_index > _saveFile[currentOccupantCountOffset])
+            if(pokemon_index > _saveFile[currentOccupantCountOffset] || pokemon_index <= 0)
                 throw new InvalidOperationException("Invalid Pokemon Selection");
 
             _currentPokemonOffset = _currentBoxOffset + _theGame.BoxHeaderSize;
