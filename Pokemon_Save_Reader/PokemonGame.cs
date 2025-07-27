@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,12 +27,15 @@ namespace PokemonSaveReader
         public abstract int PokemonCount { get; }
         public abstract int PokemonSize { get; }
         public abstract int NameOffset { get; }
+        public abstract int CurrentHPOffset { get; }
+        public abstract int HPXPOffset { get; }
         public abstract int LevelOffset { get; }
 
         // -------------------------------
         // UTILITIES
         // -------------------------------
         public abstract int PokedexIdFromByte(byte species);
+        public abstract int? CalculateMaxHP(int statXP, int baseHP, int dv, int level);
     }
 
     public class PokemonBlue : PokemonGame
@@ -53,8 +58,10 @@ namespace PokemonSaveReader
         // -------------------------------
 
         private const int _pokemonSize = 0x21;
-        private const int _nameOffset = 0;
-        private const int _levelOffset = 3; // still temporary
+        private const int _nameOffset = 0x00;
+        private const int _currentHPOffset = 0x01;
+        private const int _HPXPOffset = 0x11;
+        private const int _levelOffset = 0x03;
 
 
         // -------------------------------
@@ -75,6 +82,9 @@ namespace PokemonSaveReader
         public override int PokemonCount => _boxPokemonCountOffset;
         public override int PokemonSize => _pokemonSize;
         public override int NameOffset => _nameOffset;
+        public override int CurrentHPOffset => _currentHPOffset;
+        public override int HPXPOffset => _HPXPOffset;
+        
         public override int LevelOffset => _levelOffset;
 
         // -------------------------------
@@ -83,6 +93,20 @@ namespace PokemonSaveReader
         public override int PokedexIdFromByte(byte species)
         {
             return GenOneDictionary.ByteToPokedex[species];
+        }
+        public override int? CalculateMaxHP(int statXP, int baseHP, int dv, int level)
+        {
+            int statContribution = CalculateStatContribution(statXP, baseHP, dv, level);
+            int maxHP = statContribution + 10 + level;
+            return maxHP;
+        }
+        private int CalculateStatContribution(int statXP, int baseStat, int dv, int level)
+        {
+            int effectiveBase = (baseStat + dv) * 2;
+            double sqrtStatXP = Math.Floor(Math.Sqrt(statXP) / 4);
+            int scaledStat = (effectiveBase + (int)sqrtStatXP) * level;
+            int finalValue = (int)Math.Floor(scaledStat / 100.0);
+            return finalValue;
         }
     }
 

@@ -19,9 +19,9 @@ namespace PokemonSaveReader
 
         // Constructor
         // gives the handler the file in byte array form
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning disable CS8618 
         public PokemonBoxHandler(byte[] fileBytes, GameVersion game)
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning restore CS8618 
         {
             _saveFile = fileBytes;
             SetGame(game);
@@ -154,13 +154,41 @@ namespace PokemonSaveReader
 
         private void BuildPokemon() 
         {
+            //Name
             int speciesOffset = (int)_currentPokemonOffset + _theGame.NameOffset;
             byte speciesByte = _saveFile[speciesOffset];
             int pokedexId = _theGame.PokedexIdFromByte(speciesByte);
             _pokemon.Name = Pokedex.IdToName[pokedexId];
 
+            //Current HP
+            int currentHPOffset = (int)_currentPokemonOffset + _theGame.CurrentHPOffset;
+            _pokemon.CurrentHP = (int)ReadBigEndian(_saveFile, currentHPOffset, 2);
+//            Console.WriteLine($"HP Value is: {_pokemon.CurrentHP} Offset is: 0X{currentHPOffset:X}");
+
+            //Level
             int levelOffset = (int)_currentPokemonOffset + _theGame.LevelOffset;
             _pokemon.Level = _saveFile[levelOffset];
+
+            //Max HP
+            int maxHPOffset = (int)_currentPokemonOffset + _theGame.HPXPOffset;
+            int hpXP = (int)ReadBigEndian(_saveFile, maxHPOffset, 2);
+            _pokemon.MaxHP = _theGame.CalculateMaxHP(hpXP, 30, 2, _pokemon.Level) ?? 0;                                    /////// HARD CODED BUT WORKS!!!
+                                                                                                           //            Console.WriteLine($"HP Value is: {_pokemon.MaxHP} Offset is: 0X{maxHPOffset:X}");
+        }
+
+        // reverses 1-8 BYTES    ex: 0x1234 --> 0x3412
+        ulong ReadBigEndian(byte[] data, int offset, int byteCount)
+        {
+            if (byteCount < 1 || byteCount > 8)
+                throw new ArgumentOutOfRangeException(nameof(byteCount), "Must be between 1 and 8 bytes.");
+
+            ulong value = 0;
+            for (int i = 0; i < byteCount; i++)
+            {
+                value <<= 8;                // shifts ALL the BITS over 8 (moves the BYTES left)
+                value |= data[offset + i];  // ORs the last byte of the new array with the next byte (ORs 0 with __)
+            }
+            return value;
         }
     }
 }

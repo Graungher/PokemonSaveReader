@@ -12,7 +12,17 @@ namespace PokemonSaveReader
 
         public PokemonClass(byte[] fileBytes) => _saveFile = fileBytes;
         public string Name { get; set; } = "No Pokemon";
+        public int CurrentHP { get; set; } = 0;
+        public int MaxHP { get; set; } = 0;
         public int Level { get; set; } = 0;
+        public void PrintDetails()
+        {
+            Console.WriteLine($"The Pokemon's Name is {Name}");
+            Console.WriteLine($"The Pokemon's level is {Level}");
+            Console.WriteLine($"The Pokemon's current HP is {CurrentHP}");
+            Console.WriteLine($"The Pokemon's Max HP is {MaxHP}");
+            Console.WriteLine("");
+        }
     }
 
     public class PokemonGenOne : PokemonClass
@@ -24,11 +34,7 @@ namespace PokemonSaveReader
         public int GetTemp() => x;
 
         // temp checkling
-        public void PrintDetails()
-        {
-            Console.WriteLine($"The Pokemon's Name is {Name}");
-            Console.WriteLine($"The Pokemon's level is {Level}");
-        }
+        
     }
 
 }
