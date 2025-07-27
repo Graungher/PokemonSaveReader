@@ -19,9 +19,9 @@ namespace PokemonSaveReader
 
         // Constructor
         // gives the handler the file in byte array form
-#pragma warning disable CS8618 
+        #pragma warning disable CS8618 
         public PokemonBoxHandler(byte[] fileBytes, GameVersion game)
-#pragma warning restore CS8618 
+        #pragma warning restore CS8618 
         {
             _saveFile = fileBytes;
             SetGame(game);
@@ -91,7 +91,6 @@ namespace PokemonSaveReader
                     _theGame = new PokemonBlue();
                     _pokemon = new PokemonGenOne(_saveFile);
                     break;
-
                 default:
                     throw new ArgumentException($"Unsupported game version: {game}");
             }
@@ -130,7 +129,7 @@ namespace PokemonSaveReader
                     _currentBoxOffset = ((int)_theGame.ActiveBoxOffset);
                 }
             }
-            //Console.WriteLine($"This Is Box {boxNumber}");
+//            Console.WriteLine($"This Is Box {boxNumber}");
         }
 
         // -------------------------------
@@ -172,9 +171,14 @@ namespace PokemonSaveReader
             //Max HP
             int maxHPOffset = (int)_currentPokemonOffset + _theGame.HPXPOffset;
             int hpXP = (int)ReadBigEndian(_saveFile, maxHPOffset, 2);
-            _pokemon.MaxHP = _theGame.CalculateMaxHP(hpXP, 30, 2, _pokemon.Level) ?? 0;                                    /////// HARD CODED BUT WORKS!!!
-                                                                                                           //            Console.WriteLine($"HP Value is: {_pokemon.MaxHP} Offset is: 0X{maxHPOffset:X}");
+            _pokemon.MaxHP = _theGame.CalculateMaxHP(hpXP, 30, 2, _pokemon.Level);                                    /////// HARD CODED BUT WORKS!!!
+//            Console.WriteLine($"HP Value is: {_pokemon.MaxHP} Offset is: 0X{maxHPOffset:X}");
         }
+
+
+        // -------------------------------
+        // PRIVATE METHODS - UTILITIES
+        // -------------------------------
 
         // reverses 1-8 BYTES    ex: 0x1234 --> 0x3412
         ulong ReadBigEndian(byte[] data, int offset, int byteCount)

@@ -35,9 +35,13 @@ namespace PokemonSaveReader
         // UTILITIES
         // -------------------------------
         public abstract int PokedexIdFromByte(byte species);
-        public abstract int? CalculateMaxHP(int statXP, int baseHP, int dv, int level);
+        public abstract int CalculateMaxHP(int statXP, int baseHP, int dv, int level);
+        public abstract int CalculateStat(int statXP, int baseHP, int dv, int level);
     }
 
+    // -----------------------------------
+    // POKEMON GENERATION ONE (RED, BLUE, YELLOW)
+    // -----------------------------------
     public class PokemonBlue : PokemonGame
     {
         // -------------------------------
@@ -94,11 +98,17 @@ namespace PokemonSaveReader
         {
             return GenOneDictionary.ByteToPokedex[species];
         }
-        public override int? CalculateMaxHP(int statXP, int baseHP, int dv, int level)
+        public override int CalculateMaxHP(int statXP, int baseHP, int dv, int level)
         {
             int statContribution = CalculateStatContribution(statXP, baseHP, dv, level);
             int maxHP = statContribution + 10 + level;
             return maxHP;
+        }
+        public override int CalculateStat(int statXP, int baseStat, int dv, int level)
+        {
+            int statContribution = CalculateStatContribution(statXP, baseStat, dv, level);
+            int stat = statContribution + 5;
+            return stat;
         }
         private int CalculateStatContribution(int statXP, int baseStat, int dv, int level)
         {

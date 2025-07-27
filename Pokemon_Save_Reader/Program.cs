@@ -27,6 +27,10 @@ namespace MyApp
                 Console.WriteLine($"Error reading file: {ex.Message}");
             }
         }
+
+        // -------------------------------
+        // UI - TECHNICALLY
+        // -------------------------------
         static void UserInterface(PokemonBoxHandler a)
         {
             int i;
@@ -67,6 +71,10 @@ namespace MyApp
                 }
             }
         }
+
+        // -------------------------------
+        // POKEMON HANDLING
+        // -------------------------------
         static void GetPokemonFromBox(int boxNumber, int pokemonIndex, PokemonBoxHandler a)
         {
             PokemonClass pokemon;
@@ -100,6 +108,10 @@ namespace MyApp
             pokemonName = a.GetPokemonNameFromBox(boxNumber, pokemonIndex);
             Console.WriteLine($"{pokemonIndex,2}: {pokemonName}");
         }
+
+        // -------------------------------
+        // BOX HANDLING
+        // -------------------------------
         static void ReadBox(int boxNumber, PokemonBoxHandler a)
         {
             if ((boxNumber > a.MaxBoxes()) || boxNumber <= 0)
